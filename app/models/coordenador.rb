@@ -1,0 +1,2 @@
+class Coordenador < Usuario
+end

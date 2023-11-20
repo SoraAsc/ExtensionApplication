@@ -1,0 +1,15 @@
+.home_container {
+   width: 100%;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*background-color: #FAFAFA;
+ */
+}
+
+.home_container p {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #412234;
+}
