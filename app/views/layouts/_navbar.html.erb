@@ -3,7 +3,19 @@
 <header class="container_navbar">
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/singup">Cadastrar</a></li>
-      <li><a href="/singin">Login</a></li>
+      <% if current_usuario %>
+        <% if current_usuario.coordenador? %>
+          <li><%= link_to "Painel Do Coordenador", :controller => "coordenador", :action => "index" %></li>
+        <% else %>
+          <li><%= link_to "Painel do Estudante", :controller => "estudante", :action => "index" %></li>
+        <% end %>
+        <li><%= link_to "Edit Registration", edit_usuario_registration_path %></li>
+        <li><%= button_to "Sign out", destroy_usuario_session_path, method: :delete, data: { turbo_method: :delete } %></li>
+      <% else %>
+        <li><%= link_to "Cadastrar", new_usuario_registration_path %></li>
+        <li><%= link_to "Login", new_usuario_session_path %></li>
+      <% end %>
+      <!-- <li><a href="/singup">Cadastrar</a></li> -->
+      <!-- <li><a href="/singin">Login</a></li> -->
     </ul>
 </header>

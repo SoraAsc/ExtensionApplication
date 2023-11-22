@@ -28,11 +28,25 @@
   font-size: 1rem; 
   cursor: pointer;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: bolder;
   transition: all 0.2s;
 }
 
+.container_navbar ul li button
+{
+  border: none;
+  background-color: transparent;
+  color: #412234;
+  font-size: 1rem; 
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bolder;
+  transition: all 0.2s;
+}
+
+.container_navbar ul li button:hover,
 .container_navbar ul li a:hover
 {
   background-color: #FFFFFF;  

@@ -1,0 +1,21 @@
+<%= form_with(model: @extensao, url: estudante_submeter_extensao_path, method: :post) do |f| %>
+  <%= f.label :nome %>
+  <%= f.text_field :nome %>
+
+  <%= f.label :descricao %>
+  <%= f.text_area :descricao %>
+
+  <%= f.label :chPossivel %>
+  <%= f.number_field :chPossivel %>
+
+  <%= f.label :chMax %>
+  <%= f.number_field :chMax %>
+
+  <!--
+  <%= f.label :modalidade_id %>
+  <%= f.collection_select :modalidade_id, Modalidade.all, :id, :nome %>
+  -->
+  <%= f.label :atividade_id %>
+  <%= f.grouped_collection_select :atividade_id, Modalidade.all, :atividades, :nome, :id, :nome %>
+  <%= f.submit %>
+<% end %>

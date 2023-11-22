@@ -10,15 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_12_214641) do
+ActiveRecord::Schema.define(version: 2023_11_22_223935) do
 
-  create_table "usuarios", force: :cascade do |t|
+  create_table "atividades", force: :cascade do |t|
     t.string "nome"
-    t.string "email"
-    t.string "senha"
-    t.string "matricula"
+    t.float "chPossivel"
+    t.float "chMax"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "modalidade_id", null: false
+    t.index ["modalidade_id"], name: "index_atividades_on_modalidade_id"
+  end
+
+  create_table "extensaos", force: :cascade do |t|
+    t.string "nome"
+    t.text "descricao"
+    t.float "chPossivel"
+    t.float "chMax"
+    t.binary "documento"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "atividade_id", null: false
+    t.index ["atividade_id"], name: "index_extensaos_on_atividade_id"
+  end
+
+  create_table "modalidades", force: :cascade do |t|
+    t.string "nome"
+    t.float "chMax"
+    t.integer "tipo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "usuarios", force: :cascade do |t|
+    t.string "nome"
+    t.string "matricula"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
+    t.integer "tipo", default: 0
+    t.index ["email"], name: "index_usuarios_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "atividades", "modalidades"
+  add_foreign_key "extensaos", "atividades"
 end

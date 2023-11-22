@@ -1,0 +1,33 @@
+<!-- <%= stylesheet_link_tag 'page/home.css' %> -->
+
+<div class="estudante_container">
+  <p>Painel do Estudante</p>
+  <li><%= link_to "Submeter Extensão", :controller => "estudante", :action => "submeter_extensao" %></li>
+
+    <h1>Lista de Extensões</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nome da Extensão</th>
+          <th>Descrição</th>
+          <th>Carga Horária</th>
+          <th>Carga Horária Máxima</th>
+          <th>Atividade</th>
+          <th>Modalidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @extensoes.each do |extensao| %>
+          <tr>
+            <td><%= extensao.nome %></td>
+            <td><%= extensao.descricao %></td>
+            <td><%= extensao.chPossivel %></td>
+            <td><%= extensao.chMax %></td>
+            <td><%= extensao.atividade.nome if extensao.atividade %></td>
+            <td><%= extensao.atividade.modalidade.nome if extensao.atividade&.modalidade %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
