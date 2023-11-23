@@ -5,8 +5,6 @@ class CreateExtensaos < ActiveRecord::Migration[7.0]
       t.text :descricao
       t.float :chPossivel
       t.float :chMax
-      t.binary :documento
-
       t.timestamps
     end
   end

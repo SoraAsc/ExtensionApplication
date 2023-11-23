@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_22_223935) do
+ActiveRecord::Schema.define(version: 2023_11_23_133942) do
 
   create_table "atividades", force: :cascade do |t|
     t.string "nome"
@@ -22,12 +22,22 @@ ActiveRecord::Schema.define(version: 2023_11_22_223935) do
     t.index ["modalidade_id"], name: "index_atividades_on_modalidade_id"
   end
 
+  create_table "extensao_realizadas", force: :cascade do |t|
+    t.date "dataDeSolicitacao"
+    t.text "descricao"
+    t.boolean "ativo"
+    t.float "chHoraria"
+    t.date "dataDeConfirmacao"
+    t.binary "documento"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "extensaos", force: :cascade do |t|
     t.string "nome"
     t.text "descricao"
     t.float "chPossivel"
     t.float "chMax"
-    t.binary "documento"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "atividade_id", null: false

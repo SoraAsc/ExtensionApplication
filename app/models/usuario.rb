@@ -4,6 +4,8 @@ class Usuario < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :extensao_realizada, foreign_key: :usuario_id
+
   SENHA_VALIDA_REGEX = /\A(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{6,16}\z/.freeze
 
   validates :nome, :matricula, :email, :password, presence: { message: 'não pode estar em branco' }

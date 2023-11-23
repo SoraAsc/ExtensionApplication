@@ -1,4 +1,19 @@
 <%= form_with(model: @extensao, url: estudante_submeter_extensao_path, method: :post) do |f| %>
+  <% if @extensao.errors.any? %>
+    <div id="error_explanation" data-turbo-cache="false">
+      <h2>
+        <%= I18n.t("errors.messages.not_saved",
+                   count: @extensao.errors.count,
+                   resource: @extensao.class.model_name.human.downcase)
+         %>
+      </h2>
+      <ul>
+        <% @extensao.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= f.label :nome %>
   <%= f.text_field :nome %>
 

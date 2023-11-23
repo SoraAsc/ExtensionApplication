@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dataDeSolicitacao: 2023-11-23
+  descricao: MyText
+  ativo: false
+  chHoraria: 1.5
+  dataDeConfirmacao: 2023-11-23
+  documento: 
+
+two:
+  dataDeSolicitacao: 2023-11-23
+  descricao: MyText
+  ativo: false
+  chHoraria: 1.5
+  dataDeConfirmacao: 2023-11-23
+  documento: 
