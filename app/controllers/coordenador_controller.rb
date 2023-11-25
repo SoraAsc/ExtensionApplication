@@ -8,10 +8,15 @@ class CoordenadorController < ApplicationController
     @extensoes_realizadas_nao_ativos = @extensoes_realizadas.select { |extensao_realizada| extensao_realizada.ativo == false || extensao_realizada.ativo.nil? }
   end
 
+  def download_documento
+    extensao_realizada = ExtensaoRealizada.find(params[:id])
+    # send_data(extensao_realizada.documento, filename: 'nome_do_documento.pdf', disposition: 'inline')
+  end
+
   def validar_extensao
     extensao_realizada = ExtensaoRealizada.find(params[:id])
     if extensao_realizada.ativo == false || extensao_realizada.ativo.nil?
-      extensao_realizada.update(ativo: true)
+      extensao_realizada.update(ativo: true, dataDeConfirmacao: Time.current, coordenador: current_usuario)
       redirect_to root_path, notice: 'Extensão ativada com sucesso.'
     else
       redirect_to coordenador_path

@@ -5,19 +5,25 @@
   <li><%= link_to "Submeter Extensão", :controller => "estudante", :action => "submeter_extensao" %></li>
     <!-- <span><%= Coordenador.all.count %></span> -->
     <!--<span><%= Coordenador.first.nome %></span>-->
-    <h1>Lista de Extensões: <span><%= ExtensaoRealizada.all.count %></span></h1>
+    <h1>Lista de Extensões: <span><%= @extensao_realizadas.count %></span></h1>
+    <h3>Carga Horária Realizada: <%= @carga_horaria_total %> horas e Carga Horária Computada: <%= @carga_horaria_acumulada %> horas</h3>
     <div class="extensao_container">
       <% @extensao_realizadas.each do |extensao_realizada| %>
         <div>
           <p>Nome da Extensão: <span><%= extensao_realizada.extensao.nome %></span></p>
           <p>Descrição: <span><%= extensao_realizada.descricao %></span></p>
           <p>Data de Solicitação: <span><%= extensao_realizada.dataDeSolicitacao %></span></p>
-          <p>Carga Horária: <span><%= extensao_realizada.extensao.chPossivel %></span></p>
+          <p>Carga Horária: <span><%= extensao_realizada.chHoraria %></span></p>
           <p>Carga Horária Máxima: <span><%= extensao_realizada.extensao.chMax %></span></p>
           <p>Nome da Modalidade: <span><%= extensao_realizada.extensao.atividade.modalidade.nome if extensao_realizada.extensao.atividade.modalidade %></span></p>
           <p>Nome da Atividade: <span><%= extensao_realizada.extensao.atividade.nome if extensao_realizada.extensao.atividade %></span></p>
-          <p>Validado: <span><%= extensao_realizada.ativo %></span></p>
-          <p>Data de Confirmação: Não Implementado</p>
+          <% if extensao_realizada.ativo && extensao_realizada.coordenador %>
+            <p>Validado: Foi validada por <%= extensao_realizada.coordenador.nome %></p>
+          <% else %>
+            <p>Validado: Ainda não foi validada</p>
+          <% end %>
+          <!-- <p>Validado: <span><%= extensao_realizada.ativo %> por </span></p> -->
+          <p>Data de Confirmação: <span><%= extensao_realizada.dataDeConfirmacao %></span></p>
         </div>
       <% end %>
     </div>

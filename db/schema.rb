@@ -10,72 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_23_235156) do
-
-  create_table "atividades", force: :cascade do |t|
-    t.string "nome"
-    t.float "chPossivel"
-    t.float "chMax"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "modalidade_id", null: false
-    t.index ["modalidade_id"], name: "index_atividades_on_modalidade_id"
+ActiveRecord::Schema.define(version: 20_231_123_235_156) do
+  create_table 'atividades', force: :cascade do |t|
+    t.string 'nome'
+    t.float 'chPossivel'
+    t.float 'chMax'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'modalidade_id', null: false
+    t.index ['modalidade_id'], name: 'index_atividades_on_modalidade_id'
   end
 
-  create_table "extensao_realizadas", force: :cascade do |t|
-    t.date "dataDeSolicitacao"
-    t.text "descricao"
-    t.boolean "ativo"
-    t.float "chHoraria"
-    t.date "dataDeConfirmacao"
-    t.binary "documento"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "estudante_type", null: false
-    t.integer "estudante_id", null: false
-    t.integer "extensao_id", null: false
-    t.string "coordenador_type"
-    t.integer "coordenador_id"
-    t.index ["coordenador_type", "coordenador_id"], name: "index_extensao_realizadas_on_coordenador"
-    t.index ["estudante_type", "estudante_id"], name: "index_extensao_realizadas_on_estudante"
-    t.index ["extensao_id"], name: "index_extensao_realizadas_on_extensao_id"
+  create_table 'extensao_realizadas', force: :cascade do |t|
+    t.date 'dataDeSolicitacao'
+    t.text 'descricao'
+    t.boolean 'ativo'
+    t.float 'chHoraria'
+    t.date 'dataDeConfirmacao'
+    # t.binary "documento"
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'estudante_type', null: false
+    t.integer 'estudante_id', null: false
+    t.integer 'extensao_id', null: false
+    t.string 'coordenador_type'
+    t.integer 'coordenador_id'
+    t.index %w[coordenador_type coordenador_id], name: 'index_extensao_realizadas_on_coordenador'
+    t.index %w[estudante_type estudante_id], name: 'index_extensao_realizadas_on_estudante'
+    t.index ['extensao_id'], name: 'index_extensao_realizadas_on_extensao_id'
   end
 
-  create_table "extensaos", force: :cascade do |t|
-    t.string "nome"
-    t.text "descricao"
-    t.float "chPossivel"
-    t.float "chMax"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "atividade_id", null: false
-    t.index ["atividade_id"], name: "index_extensaos_on_atividade_id"
+  create_table 'extensaos', force: :cascade do |t|
+    t.string 'nome'
+    t.text 'descricao'
+    t.float 'chPossivel'
+    t.float 'chMax'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'atividade_id', null: false
+    t.index ['atividade_id'], name: 'index_extensaos_on_atividade_id'
   end
 
-  create_table "modalidades", force: :cascade do |t|
-    t.string "nome"
-    t.float "chMax"
-    t.integer "tipo"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'modalidades', force: :cascade do |t|
+    t.string 'nome'
+    t.float 'chMax'
+    t.integer 'tipo'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "usuarios", force: :cascade do |t|
-    t.string "nome"
-    t.string "matricula"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
-    t.string "type"
-    t.index ["email"], name: "index_usuarios_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
+  create_table 'usuarios', force: :cascade do |t|
+    t.string 'nome'
+    t.string 'matricula'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at', precision: 6
+    t.datetime 'remember_created_at', precision: 6
+    t.string 'type'
+    t.index ['email'], name: 'index_usuarios_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_usuarios_on_reset_password_token', unique: true
   end
 
-  add_foreign_key "atividades", "modalidades"
-  add_foreign_key "extensao_realizadas", "extensaos"
-  add_foreign_key "extensaos", "atividades"
+  add_foreign_key 'atividades', 'modalidades'
+  add_foreign_key 'extensao_realizadas', 'extensaos'
+  add_foreign_key 'extensaos', 'atividades'
 end

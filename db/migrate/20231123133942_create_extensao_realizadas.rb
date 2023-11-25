@@ -6,7 +6,7 @@ class CreateExtensaoRealizadas < ActiveRecord::Migration[7.0]
       t.boolean :ativo
       t.float :chHoraria
       t.date :dataDeConfirmacao
-      t.binary :documento
+      # t.binary :documento
 
       t.timestamps
     end

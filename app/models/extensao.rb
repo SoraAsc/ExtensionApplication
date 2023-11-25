@@ -3,7 +3,6 @@ class Extensao < ApplicationRecord
   has_many :extensao_realizadas
 
   validates :nome, :descricao, :chPossivel, :chMax, presence: { message: 'não pode estar em branco' }
-  validates :regulaCargaHoraria
 
   before_save :regulaCargaHoraria
 

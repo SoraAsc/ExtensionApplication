@@ -8,7 +8,7 @@ class ExtensaoRealizada < ApplicationRecord
   private
 
   def regulaCargaHoraria
-    self.chPossivel = chMax if chPossivel > chMax
+    self.chHoraria = extensao.chMax if chHoraria > extensao.chMax
   end
   
 end

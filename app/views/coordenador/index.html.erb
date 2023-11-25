@@ -14,6 +14,7 @@
       <p><strong>Ativo:</strong> <%= extensao_realizada.ativo %></p>
 
       <%= link_to "Ativar", coordenador_validar_extensao_path(id: extensao_realizada), method: :post, data: { confirm: 'Tem certeza que deseja ativar esta extensão realizada?' } %>
+      <%= link_to "Download Documento", coordenador_download_documento_path(id: extensao_realizada) %>
     </div>
     <hr>
   <% end %>
@@ -27,7 +28,8 @@
       <p><strong>Data de Solicitação:</strong> <%= extensao_realizada.dataDeSolicitacao %></p>
       <p><strong>Ativo:</strong> <%= extensao_realizada.ativo %></p>
 
-      <%= link_to "Ativar", coordenador_validar_extensao_path(id: extensao_realizada), method: :post, data: { confirm: 'Tem certeza que deseja ativar esta extensão realizada?' } %>
+      <%= link_to "Ativar", coordenador_validar_extensao_path(id: extensao_realizada), method: :post, data: { confirm: 'Tem certeza que deseja ativar esta extensão realizada?' } %>      
+
     </div>
     <hr>
   <% end %>
