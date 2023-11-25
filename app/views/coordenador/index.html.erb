@@ -2,4 +2,33 @@
 
 <div class="estudante_container">
   <p>Painel do Coordenador</p>
+  <li><%= link_to "Criar Extensão", :controller => "coordenador", :action => "criar_extensao" %></li>
+  <!-- <li><%= link_to "Validar Solicitações", :controller => "coordenador", :action => "validar_extensao" %></li> -->
+  <h1>Extensões Realizadas Não Validadas</h1>
+
+  <% @extensoes_realizadas_nao_ativos.each do |extensao_realizada| %>
+    <div>
+      <p><strong>Extensão Realizada ID:</strong> <%= extensao_realizada.id %></p>
+      <p><strong>Extensao ID:</strong> <%= extensao_realizada.extensao_id %></p>
+      <p><strong>Data de Solicitação:</strong> <%= extensao_realizada.dataDeSolicitacao %></p>
+      <p><strong>Ativo:</strong> <%= extensao_realizada.ativo %></p>
+
+      <%= link_to "Ativar", coordenador_validar_extensao_path(id: extensao_realizada), method: :post, data: { confirm: 'Tem certeza que deseja ativar esta extensão realizada?' } %>
+    </div>
+    <hr>
+  <% end %>
+
+  <h1>Extensões Realizadas Validadas</h1>
+
+  <% @extensoes_realizadas_ativos.each do |extensao_realizada| %>
+    <div>
+      <p><strong>Extensão Realizada ID:</strong> <%= extensao_realizada.id %></p>
+      <p><strong>Extensao ID:</strong> <%= extensao_realizada.extensao_id %></p>
+      <p><strong>Data de Solicitação:</strong> <%= extensao_realizada.dataDeSolicitacao %></p>
+      <p><strong>Ativo:</strong> <%= extensao_realizada.ativo %></p>
+
+      <%= link_to "Ativar", coordenador_validar_extensao_path(id: extensao_realizada), method: :post, data: { confirm: 'Tem certeza que deseja ativar esta extensão realizada?' } %>
+    </div>
+    <hr>
+  <% end %>
 </div>

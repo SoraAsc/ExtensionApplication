@@ -3,7 +3,7 @@ class RegistrationController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 
-    resource.tipo = :estudante # Define o tipo como Estudante
+    resource.type = 'Estudante' # Define o tipo como Estudante
 
     resource.save
     yield resource if block_given?

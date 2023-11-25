@@ -1,36 +1,28 @@
-<%= form_with(model: @extensao, url: estudante_submeter_extensao_path, method: :post) do |f| %>
-  <% if @extensao.errors.any? %>
+<%= form_with(model: @extensao_realizada, url: estudante_submeter_extensao_path, method: :post) do |f| %>
+  <% if @extensao_realizada.errors.any? %>
     <div id="error_explanation" data-turbo-cache="false">
       <h2>
         <%= I18n.t("errors.messages.not_saved",
-                   count: @extensao.errors.count,
-                   resource: @extensao.class.model_name.human.downcase)
+                   count: @extensao_realizada.errors.count,
+                   resource: @extensao_realizada.class.model_name.human.downcase)
          %>
       </h2>
       <ul>
-        <% @extensao.errors.full_messages.each do |message| %>
+        <% @extensao_realizada.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-  <%= f.label :nome %>
-  <%= f.text_field :nome %>
-
   <%= f.label :descricao %>
   <%= f.text_area :descricao %>
 
-  <%= f.label :chPossivel %>
-  <%= f.number_field :chPossivel %>
+  <%= f.label :CargaHoraria %>
+  <%= f.number_field :chHoraria %>
+  
+  <%= f.file_field :documento %>
 
-  <%= f.label :chMax %>
-  <%= f.number_field :chMax %>
-
-  <!--
-  <%= f.label :modalidade_id %>
-  <%= f.collection_select :modalidade_id, Modalidade.all, :id, :nome %>
-  -->
-  <%= f.label :atividade_id %>
-  <%= f.grouped_collection_select :atividade_id, Modalidade.all, :atividades, :nome, :id, :nome %>
+  <%= f.collection_select :extensao_id, Extensao.all, :id, :nome %>
+  
   <%= f.submit %>
 <% end %>

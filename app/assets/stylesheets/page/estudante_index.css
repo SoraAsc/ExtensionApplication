@@ -1,0 +1,48 @@
+.estudante_container
+{
+  width: 100%;
+  min-height: 90vh;
+  /* display: flex;
+  justify-content: center; */
+  /* align-items: center; */
+  /*background-color: #FAFAFA;*/
+}
+
+.estudante_container h1
+{
+  text-align: center;
+}
+
+.estudante_container .extensao_container
+{
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.estudante_container .extensao_container div
+{
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 350px;
+  width: 450px;
+  padding: 2px;
+  margin: 8px;
+  /* background-color: red; */
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+}
+
+.estudante_container .extensao_container div p
+{
+  margin-left: 10px;
+  margin-top: 10px;
+  font-weight: bolder;
+}
+
+.estudante_container .extensao_container div p span
+{
+  font-weight: normal;
+}

@@ -3,22 +3,9 @@
 <div class="home_container">
   
   <% if current_usuario %>
-    <p>Seja bem vindo, <%= current_usuario.nome %>, você é um <%= current_usuario.tipo %>! </p>
-    <!--<%= button_to "Sign out", destroy_usuario_session_path, method: :delete, data: { turbo_method: :delete } %>-->
-    <!--<%= link_to "Edit Registration", edit_usuario_registration_path %>-->
+    <p>Seja bem vindo, <%= current_usuario.nome %>, você é um <%= current_usuario.type %>! </p>
   <% else %>
     <p>Seja bem vindo!</p>
-    <!--<%= link_to "Sign up", new_usuario_registration_path %> -->
-    <!-- <%= link_to "Sign in", new_usuario_session_path %> -->
   <% end %>
 
-
-<!--  <% if usuario_signed_in? %>
-    <%= link_to "Sign out", destroy_usuario_session_path, method: :delete, data: {turbo_method: :delete} %>
-    <%= link_to "Edit Registration", edit_usuario_registration_path %>
-  <% else %>
-    <%= link_to "Sign up", new_usuario_registration_path %>
-    <%= link_to "Sign in", new_usuario_session_path %>
-  <% end %> 
--->
 </div>

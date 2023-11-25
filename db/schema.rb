@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_23_133942) do
+ActiveRecord::Schema.define(version: 2023_11_23_235156) do
 
   create_table "atividades", force: :cascade do |t|
     t.string "nome"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 2023_11_23_133942) do
     t.binary "documento"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "estudante_type", null: false
+    t.integer "estudante_id", null: false
+    t.integer "extensao_id", null: false
+    t.string "coordenador_type"
+    t.integer "coordenador_id"
+    t.index ["coordenador_type", "coordenador_id"], name: "index_extensao_realizadas_on_coordenador"
+    t.index ["estudante_type", "estudante_id"], name: "index_extensao_realizadas_on_estudante"
+    t.index ["extensao_id"], name: "index_extensao_realizadas_on_extensao_id"
   end
 
   create_table "extensaos", force: :cascade do |t|
@@ -62,11 +70,12 @@ ActiveRecord::Schema.define(version: 2023_11_23_133942) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at", precision: 6
     t.datetime "remember_created_at", precision: 6
-    t.integer "tipo", default: 0
+    t.string "type"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
   add_foreign_key "atividades", "modalidades"
+  add_foreign_key "extensao_realizadas", "extensaos"
   add_foreign_key "extensaos", "atividades"
 end

@@ -4,7 +4,8 @@ class Usuario < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :extensao_realizada, foreign_key: :usuario_id
+  #
+  # has_many :extensao_realizada, foreign_key: :usuario_id
 
   SENHA_VALIDA_REGEX = /\A(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{6,16}\z/.freeze
 
@@ -12,13 +13,13 @@ class Usuario < ApplicationRecord
   validates :password, confirmation: true
   validates :password, format: { with: SENHA_VALIDA_REGEX, message: 'A senha deve entre 6 a 16 caracteres e conter pelo menos uma letra maiúscula, uma letra minúsca, um caracter especial, um digito e nenhum espaço.' }
 
-  enum tipo: %i[estudante coordenador]
+  # enum tipo: %i[estudante coordenador]
 
   def estudante?
-    tipo == 'estudante'
+    type == 'Estudante'
   end
 
   def coordenador?
-    tipo == 'coordenador'
+    type == 'Coordenador'
   end
 end

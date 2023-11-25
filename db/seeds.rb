@@ -20,18 +20,15 @@ Estudante.create(
   email: 'soragg59@gmail.com',
   matricula: '2158494',
   password: 'M@fA6d1f',
-  password_confirmation: 'M@fA6d1f',
-  tipo: :estudante
+  password_confirmation: 'M@fA6d1f'
 )
 
 Coordenador.create(
   nome: 'Coordenador',
   email: 'tzirw@example.com',
-  # senha: 'Co@rd3nador',
   matricula: '123456',
   password: 'Co@rd3nador',
-  password_confirmation: 'Co@rd3nador',
-  tipo: :coordenador
+  password_confirmation: 'Co@rd3nador'
 )
 
 Extensao.delete_all
@@ -101,7 +98,7 @@ aceIII.atividades.create!(
 )
 
 aceIV.atividades.create!(
-  nome: 'Extensão',
+  nome: 'Atividade Customizada',
   chPossivel: 200,
   chMax: 200
 )

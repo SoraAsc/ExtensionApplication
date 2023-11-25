@@ -1,33 +1,24 @@
-<!-- <%= stylesheet_link_tag 'page/home.css' %> -->
+<%= stylesheet_link_tag 'page/estudante_index.css' %>
 
 <div class="estudante_container">
   <p>Painel do Estudante</p>
   <li><%= link_to "Submeter Extensão", :controller => "estudante", :action => "submeter_extensao" %></li>
-
-    <h1>Lista de Extensões</h1>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Nome da Extensão</th>
-          <th>Descrição</th>
-          <th>Carga Horária</th>
-          <th>Carga Horária Máxima</th>
-          <th>Atividade</th>
-          <th>Modalidade</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @extensoes.each do |extensao| %>
-          <tr>
-            <td><%= extensao.nome %></td>
-            <td><%= extensao.descricao %></td>
-            <td><%= extensao.chPossivel %></td>
-            <td><%= extensao.chMax %></td>
-            <td><%= extensao.atividade.nome if extensao.atividade %></td>
-            <td><%= extensao.atividade.modalidade.nome if extensao.atividade&.modalidade %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <!-- <span><%= Coordenador.all.count %></span> -->
+    <!--<span><%= Coordenador.first.nome %></span>-->
+    <h1>Lista de Extensões: <span><%= ExtensaoRealizada.all.count %></span></h1>
+    <div class="extensao_container">
+      <% @extensao_realizadas.each do |extensao_realizada| %>
+        <div>
+          <p>Nome da Extensão: <span><%= extensao_realizada.extensao.nome %></span></p>
+          <p>Descrição: <span><%= extensao_realizada.descricao %></span></p>
+          <p>Data de Solicitação: <span><%= extensao_realizada.dataDeSolicitacao %></span></p>
+          <p>Carga Horária: <span><%= extensao_realizada.extensao.chPossivel %></span></p>
+          <p>Carga Horária Máxima: <span><%= extensao_realizada.extensao.chMax %></span></p>
+          <p>Nome da Modalidade: <span><%= extensao_realizada.extensao.atividade.modalidade.nome if extensao_realizada.extensao.atividade.modalidade %></span></p>
+          <p>Nome da Atividade: <span><%= extensao_realizada.extensao.atividade.nome if extensao_realizada.extensao.atividade %></span></p>
+          <p>Validado: <span><%= extensao_realizada.ativo %></span></p>
+          <p>Data de Confirmação: Não Implementado</p>
+        </div>
+      <% end %>
+    </div>
 </div>
