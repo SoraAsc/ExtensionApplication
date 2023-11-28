@@ -3,6 +3,8 @@ class ExtensaoRealizada < ApplicationRecord
   belongs_to :estudante, polymorphic: true
   belongs_to :coordenador, polymorphic: true, optional: true
 
+  has_many_attached :documentos
+
   before_save :regulaCargaHoraria
 
   private
@@ -10,5 +12,4 @@ class ExtensaoRealizada < ApplicationRecord
   def regulaCargaHoraria
     self.chHoraria = extensao.chMax if chHoraria > extensao.chMax
   end
-  
 end

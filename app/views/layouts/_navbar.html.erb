@@ -1,21 +1,35 @@
 <%= stylesheet_link_tag 'layout/navbar.css' %>
 
 <header class="container_navbar">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <% if current_usuario %>
-        <% if current_usuario.coordenador? %>
-          <li><%= link_to "Painel Do Coordenador", :controller => "coordenador", :action => "index" %></li>
-        <% else %>
-          <li><%= link_to "Painel do Estudante", :controller => "estudante", :action => "index" %></li>
-        <% end %>
-        <li><%= link_to "Edit Registration", edit_usuario_registration_path %></li>
-        <li><%= button_to "Sign out", destroy_usuario_session_path, method: :delete, data: { turbo_method: :delete } %></li>
+  <a class="left_image" href="/"><%= image_tag( root_url + "images/uenfLogo.png", height: "50", :alt => "Uenf Logo") -%></a>
+  <div class="container_center">
+    <% if current_usuario %>
+      <% if current_usuario.coordenador? %>
+        <%= button_to "Dashboard", coordenador_path, method: :get %>
       <% else %>
-        <li><%= link_to "Cadastrar", new_usuario_registration_path %></li>
-        <li><%= link_to "Login", new_usuario_session_path %></li>
+        <%= button_to "Dashboard", estudante_path, method: :get %>
       <% end %>
-      <!-- <li><a href="/singup">Cadastrar</a></li> -->
-      <!-- <li><a href="/singin">Login</a></li> -->
-    </ul>
+      <%= button_to "Deslogar", destroy_usuario_session_path, method: :delete, data: { turbo_method: :delete } %>
+    <% else %>
+      <%= button_to "Cadastrar", new_usuario_registration_path, method: :get %>
+      <%= button_to "Login", new_usuario_session_path, method: :get %>
+    <% end %>    
+  </div>
+  <div class="container_right">
+    <% if current_usuario %>
+      <span><%= current_usuario ? current_usuario.nome : "Guest" %></span>
+    <% else %>
+      <span>Guest</span>
+    <% end %>
+    <%= link_to(edit_usuario_registration_path) do %>
+      <% if current_usuario && current_usuario.avatar.attached? %>
+        <%= image_tag url_for(current_usuario.avatar), height: "50", :alt => "User Image"  %>
+      <% else %>
+        <%= image_tag( root_url + "images/guest.jpg", height: "50", :alt => "User Image") %>
+      <% end %>
+    <% end %>
+  </div>
 </header>
+
+
+

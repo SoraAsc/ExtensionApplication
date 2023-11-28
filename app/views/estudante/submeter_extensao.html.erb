@@ -20,7 +20,7 @@
   <%= f.label :CargaHoraria %>
   <%= f.number_field :chHoraria %>
   
-  <%= f.file_field :documento %>
+  <%= f.file_field :documentos, multiple: true %>
 
   <%= f.collection_select :extensao_id, Extensao.all, :id, :nome %>
   

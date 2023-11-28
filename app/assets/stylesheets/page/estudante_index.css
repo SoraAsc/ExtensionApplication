@@ -2,10 +2,6 @@
 {
   width: 100%;
   min-height: 90vh;
-  /* display: flex;
-  justify-content: center; */
-  /* align-items: center; */
-  /*background-color: #FAFAFA;*/
 }
 
 .estudante_container h1
@@ -18,6 +14,7 @@
   display: flex;
   margin-left: 20px;
   margin-right: 20px;
+  overflow: scroll;
 }
 
 .estudante_container .extensao_container div
@@ -26,10 +23,10 @@
   flex-direction: column;
   height: auto;
   min-height: 350px;
+  min-width: 450px;
   width: 450px;
   padding: 2px;
   margin: 8px;
-  /* background-color: red; */
   -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);

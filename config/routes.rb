@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   post '/coordenador/validar_extensao', to: 'coordenador#validar_extensao'
   get '/coordenador/criar_extensao', to: 'coordenador#criar_extensao'
   post '/coordenador/criar_extensao', to: 'coordenador#criar_extensao'
-  get '/coordenador/download_documento', to: 'coordenador#download_documento'
 
   resources :extensaos
   resources :extensao_realizadas

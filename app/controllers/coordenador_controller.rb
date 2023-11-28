@@ -8,11 +8,6 @@ class CoordenadorController < ApplicationController
     @extensoes_realizadas_nao_ativos = @extensoes_realizadas.select { |extensao_realizada| extensao_realizada.ativo == false || extensao_realizada.ativo.nil? }
   end
 
-  def download_documento
-    extensao_realizada = ExtensaoRealizada.find(params[:id])
-    # send_data(extensao_realizada.documento, filename: 'nome_do_documento.pdf', disposition: 'inline')
-  end
-
   def validar_extensao
     extensao_realizada = ExtensaoRealizada.find(params[:id])
     if extensao_realizada.ativo == false || extensao_realizada.ativo.nil?
@@ -44,6 +39,6 @@ class CoordenadorController < ApplicationController
   end
 
   def extensao_params
-    params.require(:extensao).permit(:nome, :descricao, :chPossivel, :chMax, :atividade_id)
+    params.require(:extensao).permit(:nome, :descricao, :chMax, :atividade_id)
   end
 end

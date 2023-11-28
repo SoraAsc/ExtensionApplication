@@ -2,9 +2,7 @@
 
 <div class="estudante_container">
   <p>Painel do Estudante</p>
-  <li><%= link_to "Submeter Extensão", :controller => "estudante", :action => "submeter_extensao" %></li>
-    <!-- <span><%= Coordenador.all.count %></span> -->
-    <!--<span><%= Coordenador.first.nome %></span>-->
+    <li><%= link_to "Submeter Extensão", :controller => "estudante", :action => "submeter_extensao" %></li>
     <h1>Lista de Extensões: <span><%= @extensao_realizadas.count %></span></h1>
     <h3>Carga Horária Realizada: <%= @carga_horaria_total %> horas e Carga Horária Computada: <%= @carga_horaria_acumulada %> horas</h3>
     <div class="extensao_container">
@@ -27,4 +25,9 @@
         </div>
       <% end %>
     </div>
+    <% if @eh_Valido %>
+      <span>O Aluno <%= current_usuario.nome %> completou as 365 horas de extensão </span>
+    <% else %>
+      <span>O Aluno <%= current_usuario.nome %> não completou as 365 horas de extensão </span>
+    <% end %>
 </div>

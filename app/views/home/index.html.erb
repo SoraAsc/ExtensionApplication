@@ -3,9 +3,28 @@
 <div class="home_container">
   
   <% if current_usuario %>
-    <p>Seja bem vindo, <%= current_usuario.nome %>, você é um <%= current_usuario.type %>! </p>
+    <p>Seja bem vindo <%= current_usuario.nome %>, você é um <%= current_usuario.type %>! </p>
   <% else %>
     <p>Seja bem vindo!</p>
+  <% end %>
+  
+  <% Modalidade.all.each do |modalidade| %>  
+    <hr>
+    <table>
+      <caption><%= modalidade.nome + '('+modalidade.chMax.to_i.to_s+'h)' %></caption>
+      <tr>
+        <th>Nome da Atividade</th>
+        <th>Carga Horária Possível Por Categoria</th>
+        <th>Carga Horária Máxima</th>
+      </tr>
+      <% modalidade.atividades.each do |atividade| %>
+        <tr>
+          <td><%= atividade.nome %></td>
+          <td><%= atividade.chPossivel.to_i.to_s + 'h/' + atividade.categoria.to_s.humanize  %>
+          <td><%= atividade.chMax.to_i.to_s + 'h' %></td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
 
 </div>

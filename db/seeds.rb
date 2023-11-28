@@ -70,37 +70,43 @@ aceIV = Modalidade.create!(
 aceI.atividades.create!(
   nome: 'Participação no projeto de extensão intitulado “XXXXX”',
   chPossivel: 100,
-  chMax: 200
+  chMax: 200,
+  categoria: 0
 )
 
 aceI.atividades.create!(
   nome: 'Participação no projeto de extensão isolados',
   chPossivel: 50,
-  chMax: 100
+  chMax: 100,
+  categoria: 1
 )
 
 aceII.atividades.create!(
   nome: 'Participação na SCTI',
   chPossivel: 25,
-  chMax: 100
+  chMax: 100,
+  categoria: 3
 )
 
 aceII.atividades.create!(
   nome: 'Participação na organização de eventos',
   chPossivel: 20,
-  chMax: 100
+  chMax: 100,
+  categoria: 2
 )
 
 aceIII.atividades.create!(
   nome: 'Aulas supervisionadas de reforço escolar.',
   chPossivel: 10,
-  chMax: 50
+  chMax: 50,
+  categoria: 4
 )
 
 aceIV.atividades.create!(
   nome: 'Atividade Customizada',
   chPossivel: 200,
-  chMax: 200
+  chMax: 200,
+  categoria: 5
 )
 
 # aceI.atividades << atividadeACEI

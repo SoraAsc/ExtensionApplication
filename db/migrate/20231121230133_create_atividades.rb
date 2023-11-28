@@ -4,7 +4,7 @@ class CreateAtividades < ActiveRecord::Migration[7.0]
       t.string :nome
       t.float :chPossivel
       t.float :chMax
-
+      t.integer :categoria
       t.timestamps
     end
   end

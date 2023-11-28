@@ -5,7 +5,7 @@ class EstudanteController < ApplicationController
   def index
     @extensao_realizadas = ExtensaoRealizada.includes(extensao: { atividade: :modalidade }).where(estudante_id: current_usuario.id).all
     calcular_ch_acumulada
-    # @extensoes = Extensao.includes(atividade: :modalidade).all
+    @eh_Valido = @carga_horaria_acumulada >= 365
   end
 
   def submeter_extensao
@@ -28,7 +28,8 @@ class EstudanteController < ApplicationController
   end
 
   def extensao_realizada_params
-    params.require(:extensao_realizada).permit(:descricao, :chHoraria, :documento, :extensao_id)
+    # params.require(:extensao_realizada).permit(:descricao, :chHoraria, :extensao_id, documentos: %i[image file])
+    params.require(:extensao_realizada).permit(:descricao, :chHoraria, :extensao_id, documentos: [])
   end
 
   def calcular_ch_acumulada
