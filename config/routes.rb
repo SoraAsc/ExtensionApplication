@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/estudante', to: 'estudante#index'
   get '/estudante/submeter_extensao', to: 'estudante#submeter_extensao'
   post '/estudante/submeter_extensao', to: 'estudante#submeter_extensao'
+  delete '/estudante/:id', to: 'estudante#destroy'
 
   get '/coordenador', to: 'coordenador#index'
   get '/coordenador/validar_extensao', to: 'coordenador#validar_extensao'
@@ -13,5 +14,6 @@ Rails.application.routes.draw do
 
   resources :extensaos
   resources :extensao_realizadas
+
   root 'home#index'
 end

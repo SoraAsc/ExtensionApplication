@@ -29,3 +29,18 @@ body {
   list-style-type: none;
   min-width: 493px;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  /* padding: 2rem; */
+  /* background-color: #F7F7F7; */
+}
+
+form select{
+  max-width: 164px;
+}

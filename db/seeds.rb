@@ -24,7 +24,7 @@ Estudante.create(
 )
 
 Coordenador.create(
-  nome: 'Coordenador',
+  nome: 'Fermin Alfredo Tang Montane',
   email: 'tzirw@example.com',
   matricula: '123456',
   password: 'Co@rd3nador',
@@ -68,45 +68,83 @@ aceIV = Modalidade.create!(
 # )
 
 aceI.atividades.create!(
-  nome: 'Participação no projeto de extensão intitulado “XXXXX”',
+  nome: 'Participação em atividades de extensão ligadas a projetos e programas de extensão integrados à matriz curricular.',
   chPossivel: 100,
   chMax: 200,
-  categoria: 0
+  categoria: 3
 )
 
 aceI.atividades.create!(
-  nome: 'Participação no projeto de extensão isolados',
+  nome: 'Participação em atividades de extensão ligadas a projetos isolados ou sob demanda cadastrados na PROEX.',
   chPossivel: 50,
   chMax: 100,
-  categoria: 1
+  categoria: 2
 )
 
 aceII.atividades.create!(
-  nome: 'Participação na SCTI',
+  nome: 'Participação na organização de cada curso de formação ou atualização de público-alvo específico.',
   chPossivel: 25,
   chMax: 100,
-  categoria: 3
+  categoria: 0
 )
 
 aceII.atividades.create!(
   nome: 'Participação na organização de eventos',
   chPossivel: 20,
   chMax: 100,
-  categoria: 2
+  categoria: 1
 )
 
+aceII.atividades.create!(
+  nome: 'Eventos diversos para a popularização da ciência em espaços não formais de ensino',
+  chPossivel: 20,
+  chMax: 100,
+  categoria: 1
+)
+
+aceII.atividades.create!(
+  nome: 'Participação em Comissão organizadora de Campanhas ouprogramas sociais',
+  chPossivel: 10,
+  chMax: 50,
+  categoria: 1
+)
+
+aceIII.atividades.create!(
+  nome: 'Capacitação Supervisionada em eventos para professores da rede pública de educação básica (educação continuada).',
+  chPossivel: 20,
+  chMax: 100,
+  categoria: 4
+)
 aceIII.atividades.create!(
   nome: 'Aulas supervisionadas de reforço escolar.',
   chPossivel: 10,
   chMax: 50,
   categoria: 4
 )
+aceIII.atividades.create!(
+  nome: 'Assessoria, consultoria, curadoria em atividades ou serviços para públicos-alvo específicos.',
+  chPossivel: 10,
+  chMax: 100,
+  categoria: 5
+)
+aceIII.atividades.create!(
+  nome: 'Atendimento ao público em espaços de cultura, ciência e tecnologia (museus, cineclubes, galerias e afins)',
+  chPossivel: 10,
+  chMax: 50,
+  categoria: 5
+)
+aceIII.atividades.create!(
+  nome: 'Participação em organização e/ou redação de jornal ou informativo sociocultural, científico-tecnológico do curso ou da UENF, podcast, vídeos, etc.',
+  chPossivel: 10,
+  chMax: 50,
+  categoria: 6
+)
 
 aceIV.atividades.create!(
   nome: 'Atividade Customizada',
   chPossivel: 200,
   chMax: 200,
-  categoria: 5
+  categoria: 7
 )
 
 # aceI.atividades << atividadeACEI

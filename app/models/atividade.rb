@@ -4,7 +4,7 @@ class Atividade < ApplicationRecord
 
   before_save :regulaCargaHoraria
 
-  enum categoria: { curso: 0, dia_de_evento: 1, projeto: 2, semestre: 3, aula: 4, atividade: 5, edicao: 6 }
+  enum categoria: { curso: 0, dia_de_evento: 1, projeto: 2, semestre: 3, aula: 4, atividade: 5, edicao: 6, sem_restrição: 7 }
 
   private
 

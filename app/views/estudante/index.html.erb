@@ -20,8 +20,10 @@
           <% else %>
             <p>Validado: Ainda não foi validada</p>
           <% end %>
-          <!-- <p>Validado: <span><%= extensao_realizada.ativo %> por </span></p> -->
-          <p>Data de Confirmação: <span><%= extensao_realizada.dataDeConfirmacao %></span></p>
+          <p>Data de Confirmação: <span><%= extensao_realizada.dataDeConfirmacao %></span></p>  
+          <% if !extensao_realizada.ativo %>
+            <%= button_to 'Deletar', { controller: 'estudante', action: 'destroy', id: extensao_realizada.id }, method: :delete, data: { confirm: 'Tem certeza' } %>
+          <% end %>          
         </div>
       <% end %>
     </div>
