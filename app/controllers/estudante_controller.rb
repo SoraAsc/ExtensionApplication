@@ -9,7 +9,7 @@ class EstudanteController < ApplicationController
   end
 
   def submeter_extensao
-    if request.post? && curent_usuario
+    if request.post?
       @extensao_realizada = ExtensaoRealizada.new(extensao_realizada_params.merge(estudante: current_usuario, dataDeSolicitacao: Time.current, ativo: false))
       if @extensao_realizada.save
         redirect_to root_path, notice: 'Extensão solicitada com sucesso.'
