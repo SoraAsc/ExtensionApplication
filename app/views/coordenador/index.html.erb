@@ -1,36 +1,86 @@
-<!-- <%= stylesheet_link_tag 'page/home.css' %> -->
-
-<div class="estudante_container">
-  <p>Painel do Coordenador</p>
-  <li><%= link_to "Criar Extensão", :controller => "coordenador", :action => "criar_extensao" %></li>
-  <!-- <li><%= link_to "Validar Solicitações", :controller => "coordenador", :action => "validar_extensao" %></li> -->
-  <h1>Extensões Realizadas Não Validadas</h1>
-
-  <% @extensoes_realizadas_nao_ativos.each do |extensao_realizada| %>
-    <div>
-      <p><strong>Extensão Realizada ID:</strong> <%= extensao_realizada.id %></p>
-      <p><strong>Extensao ID:</strong> <%= extensao_realizada.extensao_id %></p>
-      <p><strong>Data de Solicitação:</strong> <%= extensao_realizada.dataDeSolicitacao %></p>
-      <p><strong>Ativo:</strong> <%= extensao_realizada.ativo %></p>
-
-      <%= link_to "Ativar", coordenador_validar_extensao_path(id: extensao_realizada), method: :post, data: { confirm: 'Tem certeza que deseja ativar esta extensão realizada?' } %>
-      
-      <% extensao_realizada.documentos.each do |documento| %>
-        <%= link_to "Visualizar #{documento.filename}", rails_blob_path(documento, disposition: 'inline'), target: '_blank' %><br>
+<%= stylesheet_link_tag 'page/coordenador_index.css' %>
+<div class="coordenador_container">
+  <h1>Painel do Coordenador</h1>
+  <p>Quantidade de Extensões Realizadas: <%= ExtensaoRealizada.count %></p>
+  <div class="criar_extensao_container"><%= link_to "Criar Extensão", :controller => "coordenador", :action => "criar_extensao" %></div>
+  <h5>Extensões Não Validadas: <%= @extensoes_realizadas_nao_ativos.count %></h5>
+  <div class="extensoes_realizadas_container_x">
+    <% @extensoes_realizadas_nao_ativos.each do |extensao_realizada| %>
+      <div class="informacao_container">
+        <div class="estudante_info_container">
+          <% if extensao_realizada.estudante.avatar.attached? %>
+            <%= image_tag url_for(extensao_realizada.estudante.avatar), height: "50", :alt => "User Image"  %>
+          <% else %>
+            <%= image_tag(root_url + "images/guest.jpg", height: "50", :alt => "User Image") %>
+          <% end %>
+          <span><%= extensao_realizada.estudante.nome %></span>
+        </div>
+        <p>Nome da Extensão: <span><%= extensao_realizada.extensao.nome %></span></p>
+        <p>Descrição: <span><%= extensao_realizada.descricao %></span></p>
+        <p>Data de Solicitação: <span><%= extensao_realizada.dataDeSolicitacao %></span></p>
+        <p>Carga Horária: <span><%= extensao_realizada.chHoraria.to_i %> horas</span></p>
+        <p>Carga Horária Máxima: <span><%= extensao_realizada.extensao.chMax.to_i %> horas</span></p>
+        <p>Modalidade: <span><%= extensao_realizada.extensao.atividade.modalidade.nome %></span></p>
+        <p>Atividade: <span><%= extensao_realizada.extensao.atividade.nome %></span></p>
+        <div class="documentos_container">
+          <% extensao_realizada.documentos.each do |documento| %>
+            <%= link_to "Visualizar #{documento.filename}", rails_blob_path(documento, disposition: 'inline'), target: '_blank' %>
+          <% end %>
+        </div>
+        <%= link_to "Ativar", coordenador_validar_extensao_path(id: extensao_realizada), method: :post, data: { confirm: 'Tem certeza que deseja ativar esta extensão realizada?' } %>
+      </div>
+    <% end %>    
+  </div>
+  <h5>Extensões Validadas: <%= @extensoes_realizadas_ativos.count %></h5>
+  <div class="extensoes_realizadas_container_x">
+    <% @extensoes_realizadas_ativos.each do |extensao_realizada| %>
+      <div class="informacao_container">
+        <div class="estudante_info_container">
+          <% if extensao_realizada.estudante.avatar.attached? %>
+            <%= image_tag url_for(extensao_realizada.estudante.avatar), height: "50", :alt => "User Image"  %>
+          <% else %>
+            <%= image_tag(root_url + "images/guest.jpg", height: "50", :alt => "User Image") %>
+          <% end %>
+          <span><%= extensao_realizada.estudante.nome %></span>
+        </div>
+        <p>Nome da Extensão: <span><%= extensao_realizada.extensao.nome %></span></p>
+        <p>Descrição: <span><%= extensao_realizada.descricao %></span></p>
+        <p>Data de Solicitação: <span><%= extensao_realizada.dataDeSolicitacao %></span></p>
+        <p>Carga Horária: <span><%= extensao_realizada.chHoraria.to_i %> horas</span></p>
+        <p>Carga Horária Máxima: <span><%= extensao_realizada.extensao.chMax.to_i %> horas</span></p>
+        <p>Modalidade: <span><%= extensao_realizada.extensao.atividade.modalidade.nome %></span></p>
+        <p>Atividade: <span><%= extensao_realizada.extensao.atividade.nome %></span></p>
+        <% if extensao_realizada.ativo && extensao_realizada.coordenador %>
+          <p>Validado: <span>Foi validada por <%= extensao_realizada.coordenador.nome %>!</span></p>
+        <% else %>
+          <p>Validado: <span>Ainda não foi validada!</span></p>
+        <% end %>
+        <p>Data de Confirmação: <span><%= extensao_realizada.dataDeConfirmacao %></span></p> 
+        <div class="documentos_container">
+          <% extensao_realizada.documentos.each do |documento| %>
+            <%= link_to "Visualizar #{documento.filename}", rails_blob_path(documento, disposition: 'inline'), target: '_blank' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>    
+  </div>
+  <h5>Relatório dos Alunos - Não Finalizaram: <%= @estudantes_nao_finalizados.count %></h5>
+  <div class="estudantes_nao_finalizados_container">
+      <% @estudantes_nao_finalizados.each do |estudante| %>
+        <div class="informacao_container">
+          <% if estudante.avatar.attached? %>
+            <%= image_tag url_for(estudante.avatar), height: "50", :alt => "User Image"  %>
+          <% else %>
+            <%= image_tag(root_url + "images/guest.jpg", height: "50", :alt => "User Image") %>
+          <% end %>
+          <span><%= estudante.nome %></span>
+          <p><strong><%= estudante.nome %></strong> não concluiu as 365 horas em ACE</p>
+        </div>
       <% end %>
-    </div>
-    <hr>
-  <% end %>
+  </div>
+  <h5>Relatório dos Alunos - Finalizaram: <%= @estudantes_finalizados.count %></h5>
+  <div class="estudantes_finalizados_container">
 
-  <h1>Extensões Realizadas Validadas</h1>
-
-  <% @extensoes_realizadas_ativos.each do |extensao_realizada| %>
-    <div>
-      <p><strong>Extensão Realizada ID:</strong> <%= extensao_realizada.id %></p>
-      <p><strong>Extensao ID:</strong> <%= extensao_realizada.extensao_id %></p>
-      <p><strong>Data de Solicitação:</strong> <%= extensao_realizada.dataDeSolicitacao %></p>
-      <p><strong>Ativo:</strong> <%= extensao_realizada.ativo %></p>
-    </div>
-    <hr>
-  <% end %>
+  </div>
 </div>
+        

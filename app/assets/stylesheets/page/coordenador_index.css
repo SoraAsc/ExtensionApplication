@@ -1,0 +1,146 @@
+.coordenador_container
+{
+  width: 100%;
+  min-height: 90vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.coordenador_container h1{
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 25px;
+  font-style: italic;
+  text-align: center;
+}
+
+.coordenador_container h5 {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.coordenador_container p {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+
+.coordenador_container .criar_extensao_container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.coordenador_container a {
+  text-align: center;
+  padding: 7px 20px;
+  border-radius: 25px;
+  transition: all 0.5s;
+  background-color: #F3752B;
+  color: #EDEDF4;
+}
+
+.coordenador_container a:hover {
+  color: #F3752B;
+  background-color: black;
+}
+
+.coordenador_container .extensoes_realizadas_container_x {
+  display: flex;
+  padding: 10px 20px 0;
+  overflow-x: auto;
+}
+
+.coordenador_container .extensoes_realizadas_container_x .informacao_container {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  align-items: start;
+  min-height: 350px;
+  min-width: 450px;
+  max-width: 450px;
+  text-align: left;
+  border-radius: 20px;
+  padding: 0px 20px;
+  margin: 10px;
+  background-color: #EDEDF4;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+}
+
+.coordenador_container .extensoes_realizadas_container_x .informacao_container p {
+  text-align: left;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.coordenador_container .extensoes_realizadas_container_x .informacao_container p span {
+  font-weight: 400;
+}
+
+.coordenador_container .extensoes_realizadas_container_x .informacao_container a {
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.coordenador_container .extensoes_realizadas_container_x .documentos_container {
+  display: flex;
+  overflow: auto;
+  max-width: 100%;
+  font-size: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.coordenador_container .informacao_container .estudante_info_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.coordenador_container .informacao_container .estudante_info_container img {
+  margin-top: 5px;
+  margin-right: 20px;
+  border-radius: 50%;
+  border: 2px solid #A20021;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.coordenador_container .estudantes_nao_finalizados_container {
+  display: flex;
+  padding: 10px 20px 0;
+  overflow-x: auto;
+}
+
+.coordenador_container .estudantes_nao_finalizados_container .informacao_container {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  align-items: start;
+  min-height: 200px;
+  min-width: 200px;
+  max-width: 200px;
+  text-align: left;
+  border-radius: 20px;
+  padding: 0px 20px;
+  margin: 10px;
+  background-color: #EDEDF4;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+}
+
+.coordenador_container .estudantes_nao_finalizados_container .informacao_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.coordenador_container .estudantes_nao_finalizados_container .informacao_container img {
+  margin-top: 5px;
+  border-radius: 50%;
+  border: 2px solid #A20021;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}

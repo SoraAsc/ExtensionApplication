@@ -3,9 +3,10 @@ class CoordenadorController < ApplicationController
   before_action :autoriza_coordenador, only: %i[index validar_extensao]
 
   def index
-    @extensoes_realizadas = ExtensaoRealizada.all
-    @extensoes_realizadas_ativos = @extensoes_realizadas.select { |extensao_realizada| extensao_realizada.ativo == true }
-    @extensoes_realizadas_nao_ativos = @extensoes_realizadas.select { |extensao_realizada| extensao_realizada.ativo == false || extensao_realizada.ativo.nil? }
+    @extensoes_realizadas_ativos = current_usuario.VerTodasExtensoesValidadas
+    @extensoes_realizadas_nao_ativos = current_usuario.VerTodasExtensoesNaoValidadas
+    @estudantes_nao_finalizados = current_usuario.VerEstudantesNaoFinalizados()
+    @estudantes_finalizados = current_usuario.VerEstudantesFinalizados()
   end
 
   def validar_extensao

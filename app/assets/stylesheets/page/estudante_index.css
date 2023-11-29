@@ -2,44 +2,96 @@
 {
   width: 100%;
   min-height: 90vh;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.estudante_container h1
-{
+.estudante_container h1{
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 25px;
+  font-style: italic;
   text-align: center;
 }
 
-.estudante_container .extensao_container
-{
-  display: flex;
-  margin-left: 20px;
-  margin-right: 20px;
-  overflow: auto;
+
+.estudante_container p {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 18px;
 }
 
-.estudante_container .extensao_container div
-{
+.estudante_container .center_container {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 20px 0;
+  align-items: center;
+  flex-direction: row;
+}
+
+.estudante_container .center_container a {
+  padding: 7px 20px;
+  border-radius: 25px;
+  transition: all 0.5s;
+  background-color: #F3752B;
+  color: #EDEDF4;
+}
+
+.estudante_container .center_container a:hover {
+  color: #F3752B;
+  background-color: black;
+}
+
+.estudante_container .text_horaria_realizado {
+  margin-top: 25px;
+  font-weight: 600;
+}
+
+.estudante_container .extensoes_container {
+  display: flex;
+  padding: 10px 20px 0;
+  overflow-x: auto;
+}
+
+.estudante_container .extensoes_container div {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: auto;
+  align-items: start;
   min-height: 350px;
   min-width: 450px;
-  width: 450px;
-  padding: 2px;
-  margin: 8px;
+  max-width: 450px;
+  text-align: left;
+  border-radius: 20px;
+  padding: 10px 20px;
+  padding-right: 70px;
+  margin: 10px;
+  background-color: #EDEDF4;
   -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
 }
-
-.estudante_container .extensao_container div p
-{
-  margin-left: 10px;
-  margin-top: 10px;
-  font-weight: bolder;
+.estudante_container .extensoes_container div form {
+  position: absolute;  
+  width: 50px;
+  height: 35px;
+  top: 5%;
+  right: 5%;
 }
 
-.estudante_container .extensao_container div p span
-{
-  font-weight: normal;
+.estudante_container .extensoes_container div form button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.estudante_container .extensoes_container div p {
+  text-align: left;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.estudante_container .extensoes_container div p span {
+  font-weight: 400;
 }

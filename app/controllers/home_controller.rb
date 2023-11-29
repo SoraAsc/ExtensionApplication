@@ -1,5 +1,9 @@
 class HomeController < ApplicationController
   def index
-    render
+    @modalidades = AdquirirModalidades()
+  end
+
+  def AdquirirModalidades
+    Modalidade.all
   end
 end

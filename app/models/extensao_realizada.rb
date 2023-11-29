@@ -1,4 +1,6 @@
 class ExtensaoRealizada < ApplicationRecord
+  validates :chHoraria, presence: { message: 'não pode estar em branco' }
+
   # A ExtensaoRealizada possui uma Extensao
   belongs_to :extensao, foreign_key: :extensao_id
   # A ExtensaoRealizada pertence a um Estudante, ("polymorphic: true": indica que a associação é polimórfica, ou seja o estudante pode se associar com vários outros modelos)
@@ -11,6 +13,10 @@ class ExtensaoRealizada < ApplicationRecord
 
   # Sempre que uma instância dessa classe for criada, atualizada, salvada esse função será chamada.
   before_save :regulaCargaHoraria
+
+  def VerificarCargaHoraria
+    chHoraria.to_i
+  end
 
   private
 

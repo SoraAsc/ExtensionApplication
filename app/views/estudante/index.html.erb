@@ -1,35 +1,42 @@
 <%= stylesheet_link_tag 'page/estudante_index.css' %>
 
 <div class="estudante_container">
-  <p>Painel do Estudante</p>
-    <li><%= link_to "Submeter Extensão", :controller => "estudante", :action => "submeter_extensao" %></li>
-    <h1>Lista de Extensões: <span><%= @extensao_realizadas.count %></span></h1>
-    <h3>Carga Horária Realizada: <%= @carga_horaria_total %> horas e Carga Horária Computada: <%= @carga_horaria_acumulada %> horas</h3>
-    <div class="extensao_container">
-      <% @extensao_realizadas.each do |extensao_realizada| %>
-        <div>
-          <p>Nome da Extensão: <span><%= extensao_realizada.extensao.nome %></span></p>
-          <p>Descrição: <span><%= extensao_realizada.descricao %></span></p>
-          <p>Data de Solicitação: <span><%= extensao_realizada.dataDeSolicitacao %></span></p>
-          <p>Carga Horária: <span><%= extensao_realizada.chHoraria %></span></p>
-          <p>Carga Horária Máxima: <span><%= extensao_realizada.extensao.chMax %></span></p>
-          <p>Nome da Modalidade: <span><%= extensao_realizada.extensao.atividade.modalidade.nome if extensao_realizada.extensao.atividade.modalidade %></span></p>
-          <p>Nome da Atividade: <span><%= extensao_realizada.extensao.atividade.nome if extensao_realizada.extensao.atividade %></span></p>
-          <% if extensao_realizada.ativo && extensao_realizada.coordenador %>
-            <p>Validado: Foi validada por <%= extensao_realizada.coordenador.nome %></p>
-          <% else %>
-            <p>Validado: Ainda não foi validada</p>
+  <h1>Painel do Estudante</h1>
+  <p>Quantidade de Extensões Realizadas: <%= @extensao_realizadas.count %></p>
+  <div class="center_container">
+    <span>Carga Horária Realizada: <%= @carga_horaria_total.to_i %> horas</span>
+    <%= link_to "Submeter Extensão", :controller => "estudante", :action => "submeter_extensao" %>
+    <span>Carga Horária Efetiva: <%= @carga_horaria_acumulada.to_i %> horas</span>
+  </div>
+  <% if @eh_valido %>
+    <p class="text_horaria_realizado">Você completou a carga horária de 365 horas necessárias em ACE .</p>
+  <% else %>
+    <p class="text_horaria_realizado">Você realizou "<%= @carga_horaria_acumulada.to_i %>" horas em ACE é necessário mais "<%= (365-@carga_horaria_acumulada.to_i) %>" horas para completar as "365" horas.</p>    
+  <% end %>
+  <div class="extensoes_container">
+    <% @extensao_realizadas.each do |extensao_realizada| %>
+      <div>
+        <% if !extensao_realizada.ativo %>
+          <%= button_to({ controller: 'estudante', action: 'destroy', id: extensao_realizada.id }, method: :delete, data: { confirm: 'Tem certeza' }) do %>
+            <%= image_tag(root_url + "images/delete.svg", height: "32", :alt => "Delete Button") %>
           <% end %>
-          <p>Data de Confirmação: <span><%= extensao_realizada.dataDeConfirmacao %></span></p>  
-          <% if !extensao_realizada.ativo %>
-            <%= button_to 'Deletar', { controller: 'estudante', action: 'destroy', id: extensao_realizada.id }, method: :delete, data: { confirm: 'Tem certeza' } %>
-          <% end %>          
-        </div>
-      <% end %>
-    </div>
-    <% if @eh_Valido %>
-      <span>O Aluno <%= current_usuario.nome %> completou as 365 horas de extensão </span>
-    <% else %>
-      <span>O Aluno <%= current_usuario.nome %> não completou as 365 horas de extensão </span>
+        <% end %>
+
+        <!-- <%= image_tag(root_url + "images/delete.svg", height: "32", :alt => "Delete Button") %> -->
+        <p>Nome da Extensão: <span><%= extensao_realizada.extensao.nome %></span></p>
+        <p>Descrição: <span><%= extensao_realizada.descricao %></span></p>
+        <p>Data de Solicitação: <span><%= extensao_realizada.dataDeSolicitacao %></span></p>
+        <p>Carga Horária: <span><%= extensao_realizada.chHoraria.to_i %> horas</span></p>
+        <p>Carga Horária Máxima: <span><%= extensao_realizada.extensao.chMax.to_i %> horas</span></p>
+        <p>Modalidade: <span><%= extensao_realizada.extensao.atividade.modalidade.nome %></span></p>
+        <p>Atividade: <span><%= extensao_realizada.extensao.atividade.nome %></span></p>
+        <% if extensao_realizada.ativo && extensao_realizada.coordenador %>
+          <p>Validado: <span>Foi validada por <%= extensao_realizada.coordenador.nome %>!</span></p>
+        <% else %>
+          <p>Validado: <span>Ainda não foi validada!</span></p>
+        <% end %>
+        <p>Data de Confirmação: <span><%= extensao_realizada.dataDeConfirmacao %></span></p> 
+      </div>
     <% end %>
+  </div>
 </div>

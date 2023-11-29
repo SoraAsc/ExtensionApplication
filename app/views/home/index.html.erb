@@ -8,7 +8,7 @@
     <p>Seja bem vindo!</p>
   <% end %>
   
-  <% Modalidade.all.each do |modalidade| %>  
+  <% @modalidades.each do |modalidade| %>  
     <hr>
     <table>
       <caption><%= modalidade.nome + '('+modalidade.chMax.to_i.to_s+'h)' %></caption>
@@ -17,7 +17,7 @@
         <th>Carga Horária Possível Por Categoria</th>
         <th>Carga Horária Máxima</th>
       </tr>
-      <% modalidade.atividades.each do |atividade| %>
+      <% modalidade.VerTodasAtividades().each do |atividade| %>
         <tr>
           <td><%= atividade.nome %></td>
           <td><%= atividade.chPossivel.to_i.to_s + 'h/' + atividade.categoria.to_s.humanize  %>

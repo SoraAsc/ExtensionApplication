@@ -25,7 +25,7 @@
       <% if current_usuario && current_usuario.avatar.attached? %>
         <%= image_tag url_for(current_usuario.avatar), height: "50", :alt => "User Image"  %>
       <% else %>
-        <%= image_tag( root_url + "images/guest.jpg", height: "50", :alt => "User Image") %>
+        <%= image_tag(root_url + "images/guest.jpg", height: "50", :alt => "User Image") %>
       <% end %>
     <% end %>
   </div>

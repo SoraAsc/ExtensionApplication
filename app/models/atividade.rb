@@ -17,4 +17,9 @@ class Atividade < ApplicationRecord
     self.chMax = modalidade.chMax if chMax > modalidade.chMax
     self.chPossivel = chMax if chPossivel > chMax
   end
+
+  
+  def VerTodasExtensoes
+    extensaos
+  end
 end

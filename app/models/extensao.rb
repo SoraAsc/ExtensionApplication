@@ -10,6 +10,18 @@ class Extensao < ApplicationRecord
   # Antes de salvar regula a carga horária
   before_save :regulaCargaHoraria
 
+  def VerAtividadeAtribuida
+    atividade
+  end
+
+  def VerModalidadeAtribuida
+    atividade.modalidade
+  end
+
+  def VerTodosEstudantesDaExtensao
+    extensao_realizadas.map(&:estudante).flatten
+  end
+
   private
 
   # Regula a carga horária máxima, em caso do usuário fornecer uma maior que a máxima.
