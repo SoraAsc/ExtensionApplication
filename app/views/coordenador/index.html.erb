@@ -65,22 +65,37 @@
     <% end %>    
   </div>
   <h5>Relatório dos Alunos - Não Finalizaram: <%= @estudantes_nao_finalizados.count %></h5>
-  <div class="estudantes_nao_finalizados_container">
+  <div class="estudantes_extensionistas_container">
       <% @estudantes_nao_finalizados.each do |estudante| %>
-        <div class="informacao_container">
-          <% if estudante.avatar.attached? %>
-            <%= image_tag url_for(estudante.avatar), height: "50", :alt => "User Image"  %>
-          <% else %>
-            <%= image_tag(root_url + "images/guest.jpg", height: "50", :alt => "User Image") %>
-          <% end %>
-          <span><%= estudante.nome %></span>
-          <p><strong><%= estudante.nome %></strong> não concluiu as 365 horas em ACE</p>
-        </div>
+        <%= button_to({ controller: 'coordenador', action: 'show', id: estudante.id }, method: :get) do %>
+          <div class="informacao_container">
+            <% if estudante.avatar.attached? %>
+              <%= image_tag url_for(estudante.avatar), height: "50", :alt => "User Image"  %>
+            <% else %>
+              <%= image_tag(root_url + "images/guest.jpg", height: "50", :alt => "User Image") %>
+            <% end %>
+            <span><%= estudante.nome %></span>
+            <p><strong><%= estudante.nome %></strong> não concluiu as 365 horas em ACE</p>
+          </div>
+        <% end %>
       <% end %>
   </div>
-  <h5>Relatório dos Alunos - Finalizaram: <%= @estudantes_finalizados.count %></h5>
-  <div class="estudantes_finalizados_container">
-
+  <h5>Relatório dos Alunos - Finalizaram: <%= @estudantes_finalizados.count %></h5>     
+    
+  <div class="estudantes_extensionistas_container">
+      <% @estudantes_finalizados.each do |estudante| %>
+        <%= button_to({ controller: 'coordenador', action: 'show', id: estudante.id }, method: :get) do %>
+          <div class="informacao_container">
+            <% if estudante.avatar.attached? %>
+              <%= image_tag url_for(estudante.avatar), height: "50", :alt => "User Image"  %>
+            <% else %>
+              <%= image_tag(root_url + "images/guest.jpg", height: "50", :alt => "User Image") %>
+            <% end %>
+            <span><%= estudante.nome %></span>
+            <p><strong><%= estudante.nome %></strong> concluiu as 365 horas em ACE</p>
+          </div>
+        <% end %>
+      <% end %>
   </div>
 </div>
         

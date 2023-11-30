@@ -9,6 +9,15 @@ class CoordenadorController < ApplicationController
     @estudantes_finalizados = current_usuario.VerEstudantesFinalizados()
   end
 
+  def show
+    @estudante = Estudante.find(params[:id])
+    @extensoes_realizadas = @estudante.VerExtensoesRealizadas()
+    @carga_horaria_total, @carga_horaria_acumulada = @estudante.VerificarCargaHoraria()
+    @extensoes_por_modalidade = @extensoes_realizadas.group_by do |extensao_realizada|
+      extensao_realizada.extensao.atividade.modalidade
+    end
+  end
+
   def validar_extensao
     extensao_realizada = ExtensaoRealizada.find(params[:id])
     if extensao_realizada.ativo == false || extensao_realizada.ativo.nil?

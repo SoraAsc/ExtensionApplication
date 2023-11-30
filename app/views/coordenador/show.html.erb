@@ -1,0 +1,22 @@
+<div class="estudante_perfil_extensionista_container">
+  <h6><%= @estudante.nome %> - <%= @estudante.matricula %></h6>
+  <p>Quantidade de Extensões Realizadas: <%= @extensoes_realizadas.count %></p>
+  <div class="carga_horaria_container">
+    <p>Carga Horária Realizada: <%= @carga_horaria_total.to_i %> horas</p>
+    <p>Carga Horária Efetiva: <%= @carga_horaria_acumulada.to_i %> horas</p>
+  </div>
+  <% @extensoes_por_modalidade.each do |modalidade, extensoes_realizadas| %>
+    <table>
+      <tr>
+        <th>Atividades: <%= modalidade.nome %></th>
+        <th>Horas Cumpridas</th>
+      </tr>
+      <% extensoes_realizadas.each do |extensao_realizada| %>
+        <tr>
+        <td><%= extensao_realizada.extensao.nome %>: <%= extensao_realizada.descricao %></td>
+        <td><%= extensao_realizada.chHoraria.to_i %> horas</td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

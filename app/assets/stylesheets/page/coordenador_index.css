@@ -108,13 +108,24 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 }
 
-.coordenador_container .estudantes_nao_finalizados_container {
+.coordenador_container .estudantes_extensionistas_container {
   display: flex;
   padding: 10px 20px 0;
-  overflow-x: auto;
+  overflow-x: auto;  
 }
 
-.coordenador_container .estudantes_nao_finalizados_container .informacao_container {
+.coordenador_container .estudantes_extensionistas_container form {
+  width: auto;
+  height: auto;
+}
+
+.coordenador_container .estudantes_extensionistas_container form button{
+  border: none;
+  background: transparent;
+}
+
+.coordenador_container .estudantes_extensionistas_container .informacao_container {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   height: auto;
@@ -132,15 +143,45 @@
   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
 }
 
-.coordenador_container .estudantes_nao_finalizados_container .informacao_container {
+.coordenador_container .estudantes_extensionistas_container .informacao_container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.coordenador_container .estudantes_nao_finalizados_container .informacao_container img {
+.coordenador_container .estudantes_extensionistas_container .informacao_container img {
   margin-top: 5px;
   border-radius: 50%;
   border: 2px solid #A20021;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+
+
+
+
+.estudante_perfil_extensionista_container {
+  width: 100%;
+  min-height: 90vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.estudante_perfil_extensionista_container h6 {  
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 28px;
+  font-style: italic;
+}
+
+.estudante_perfil_extensionista_container p {  
+  margin-top: 10px;
+  text-align: center;
+}
+
+.estudante_perfil_extensionista_container .carga_horaria_container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
 }

@@ -13,6 +13,10 @@ class Estudante < Usuario
     extensao_realizadas.select { |extensao_realizada| extensao_realizada.ativo == false || extensao_realizada.ativo.nil? }
   end
 
+  def VerExtensoesRealizadas
+    extensao_realizadas.select { |extensao_realizada| extensao_realizada.ativo == true }
+  end
+
   private
 
   def calcular_ch_acumulada

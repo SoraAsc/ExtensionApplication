@@ -35,4 +35,7 @@ tr:nth-child(even) {
 
 th:nth-child(1) {
   width: 200px;
+  /* min-width: 200px;
+  max-width: 400px;
+  width: auto; */
 }
