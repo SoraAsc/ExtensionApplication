@@ -1,4 +1,8 @@
 class Usuario < ApplicationRecord
+  # protected
+
+  # attr_writer :nome, :password, :matricula
+
   # Configurações padrões do devise para a autenticação, recuperação e outros modulos como o registro de um novo usuário.
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

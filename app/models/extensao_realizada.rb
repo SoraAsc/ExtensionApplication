@@ -1,4 +1,8 @@
 class ExtensaoRealizada < ApplicationRecord
+  # private
+
+  # attr_writer :dataDeSolicitacao, :descricao, :ativo, :chHoraria, :dataDeConfirmacao
+
   validates :chHoraria, presence: { message: 'não pode estar em branco' }
 
   # A ExtensaoRealizada possui uma Extensao

@@ -1,4 +1,4 @@
-<%= form_with(model: @extensao_realizada, url: estudante_submeter_extensao_path, method: :post) do |f| %>
+<%= form_with(model: @extensao_realizada, url: estudante_submeter_extensao_path, method: :post, class: "submeter_extensao_form") do |f| %>
   <% if @extensao_realizada.errors.any? %>
     <div id="error_explanation" data-turbo-cache="false">
       <h2>
@@ -19,10 +19,13 @@
 
   <%= f.label :CargaHoraria %>
   <%= f.number_field :chHoraria %>
-  
+
+  <%= f.label :Documentos %>
   <%= f.file_field :documentos, multiple: true %>
 
+  <%= f.label :Extensao %>
   <%= f.collection_select :extensao_id, Extensao.all, :id, :nome %>
-  
-  <%= f.submit %>
+  <div>
+    <%= f.submit %>
+  </div>
 <% end %>

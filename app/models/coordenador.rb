@@ -4,7 +4,7 @@ class Coordenador < Usuario
   has_many :extensao_realizadas
 
   # Não usada, porém se o sistema, posuisse mais de um coordenador, poderia ser usada, para delimitar a visualização só daquela extensão que determinador coordenador validou.
-  def VerExtensoesValidadas
+  def VerExtensoesRealizadas
     extensao_realizadas.select { |extensao_realizada| extensao_realizada.ativo == true }
   end
 
