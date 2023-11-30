@@ -26,19 +26,27 @@ class Estudante < Usuario
     horas_acumuladas_por_atividade = Hash.new(0)
     horas_acumuladas_por_modalidade = Hash.new(0)
 
-    # Itera através das extensões realizadas
+    # Itera através das extensões realizadas, vai em extensao_realizada verificar até ela estiver 'ativa', se não passa para a próxima extensão_realizada
     extensao_realizadas.each do |extensao_realizada|
       next unless extensao_realizada.ativo
-
+      
+  # Adiciona a carga horária da extensão ao total
       carga_horaria_total += extensao_realizada.chHoraria
+      
+  # Calcula a carga horária disponível para a extensão e atualiza os dicionários
       carga_disponivel = carga_disponivel_para_extensao(extensao_realizada, horas_acumuladas_por_atividade, horas_acumuladas_por_modalidade)
+carga_horaria_acumulada += carga_disponivel
 
-      carga_horaria_acumulada += carga_disponivel
+  # Obtém os IDs da atividade e modalidade da extensão realizada
       atividade_id = extensao_realizada.extensao.atividade.id
       modalidade_id = extensao_realizada.extensao.atividade.modalidade.id
+
+  # Atualiza as horas acumuladas nos dicionários por atividade e modalidade
       horas_acumuladas_por_atividade[atividade_id] += carga_disponivel
       horas_acumuladas_por_modalidade[modalidade_id] += carga_disponivel
     end
+    
+  # Retorna um array com a carga horária total e acumulada
     [carga_horaria_total, carga_horaria_acumulada]
   end
 

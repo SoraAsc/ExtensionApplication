@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   delete '/estudante/:id', to: 'estudante#destroy'
 
   get '/coordenador', to: 'coordenador#index'
-  get '/coordenador/:id', to: 'coordenador#show'
   get '/coordenador/validar_extensao', to: 'coordenador#validar_extensao'
   post '/coordenador/validar_extensao', to: 'coordenador#validar_extensao'
   get '/coordenador/criar_extensao', to: 'coordenador#criar_extensao'
   post '/coordenador/criar_extensao', to: 'coordenador#criar_extensao'
+  get '/coordenador/:id', to: 'coordenador#show'
 
   resources :extensaos
   resources :extensao_realizadas
